@@ -17,7 +17,7 @@
   <header>
     <nav class="navbar navbar-expand-md navbar-light bg-white border-bottom">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Tienda de Electrodomesticos</a>
+        <a class="navbar-brand" href="#">AutoMercado</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
           aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -33,15 +33,15 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
                 aria-expanded="false">
-                Electrodomesticos
+                Categorias
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li><a class="dropdown-item" href="">Todos</a></li>
-
+                {% for c in categories %}
                 <li class=" selected">
-                  <a class="dropdown-item" href=""></a>
+                  <a class="dropdown-item" href="">{{c.name | title}}</a>
                 </li>
-
+                {% endfor %}
               </ul>
             </li>
           </ul>
