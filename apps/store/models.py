@@ -2,6 +2,14 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.urls import reverse
 # Create your models here.
+
+
+class ProductManager(models.Manager):
+  def get_queryset(self):
+    return super(ProductManager, self).get_queryset().filter(is_active=True)
+  
+
+
 class Category(models.Model):
   name = models.CharField(max_length=255, db_index=True)
   slug = models.SlugField(max_length=255, unique=True)
@@ -28,6 +36,8 @@ class Product(models.Model):
   is_active = models.BooleanField(default=True)
   created = models.DateTimeField(auto_now_add= True)
   updated = models.DateTimeField(auto_now=True)
+  objects = models.Manager()
+  product = ProductManager()
   
   class Meta:
     verbose_name_plural = 'Products'
